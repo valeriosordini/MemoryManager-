@@ -1,33 +1,43 @@
-//custom variables for y coordinate of sun & horizon
-let sunHeight;
-let horizon = 300;
-let metà = 200;
-
-function setup() {
-  createCanvas(400, 400);
-}
-
-function draw() {
-  // set sky color - black for night and blue for day
-  if(sunHeight < horizon){ 
+{
+  sunHeight = mouseY;
+  //SOLE 
+  
+  // Giorno
+  if (sunHeight < midLine) {
     background('lightblue');
-  } else {
+  }
+  // Tramonto
+  else if (sunHeight >= midLine && sunHeight < horizon) {
+    background(255, 140, 0);
+  }
+  // Notte
+  else {
     background(0);
   }
-  
-  //sun follows y-coordinate of mouse
-  sunHeight = mouseY;
-  console.log(sunHeight < horizon)
-  
-  //sun
+
+  // sole
   fill('yellow');
   circle(200, sunHeight, 100);
 
-  //landscape
-  if (sunHeight < horizon) {
-    fill('lightgreen');
-  } else {
-    fill('green');
+  // stella
+  if (sunHeight >= horizon) {
+    fill(255);
+    circle(starX, starY, 5);
   }
-  rect(0,300,400,horizon);
+
+  //TERRENO
+  // Giorno
+  if (sunHeight < midLine) {
+    fill('lightgreen');
+  }
+  // Tramonto
+  else if (sunHeight >= midLine && sunHeight < horizon) {
+    fill(120, 80, 40); 
+  }
+  // Notte
+  else {
+    fill('darkgreen');
+  }
+
+  rect(0, horizon, 400, 100);
 }

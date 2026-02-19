@@ -1,1 +1,1 @@
-# MemoryManager-
+# Esercitazione sole
